@@ -22,7 +22,6 @@ class AlbumList extends Component {
 		if (!this.state.albums) {
 			return <Text>Loading...</Text>;
 		}
-
 		return <View>{this.renderAlbums()}</View>;
 	}
 }
