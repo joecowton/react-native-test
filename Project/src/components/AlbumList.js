@@ -6,7 +6,7 @@ import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
 type State = {
-	albums: Array<Object>
+	albums: Array<*>
 }
 
 type Props = {}
@@ -21,8 +21,7 @@ class AlbumList extends Component<Props, State> {
 	}
 
 	renderAlbums() {
-		const { albums } = this.state;
-		return albums.map(album => (
+		return this.state.albums.map(album => (
 			<AlbumDetail key={album.title} album={album} />
 		));
 	}

@@ -1,7 +1,13 @@
+// @flow
+
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Header = props => {
+type Props = {
+	headerText: String
+}
+
+const Header = (props: Props) => {
 	const { textStyle, viewStyle } = styles;
 
 	return (

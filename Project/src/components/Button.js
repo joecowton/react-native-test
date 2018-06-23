@@ -2,7 +2,12 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ onPress, children }) => {
+type Props = {
+	onPress: *,
+	children: *,
+}
+
+const Button = ({ onPress, children }: Props) => {
 	const { buttonStyle, textStyle } = styles;
 
 	return (

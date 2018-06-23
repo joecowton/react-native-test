@@ -6,7 +6,19 @@ import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
 
-const AlbumDetail = ({ album }) => {
+
+
+type AlbumType = {
+	album: {
+		title: ?String,
+		artist: ?String,
+		thumbnail_image?: String,
+		image?: String,
+		url?: String,
+	}
+}
+
+const AlbumDetail = ({ album }: AlbumType) => {
 	const { title, artist, thumbnail_image, image, url } = album;
 	const {
 		thumbnailStyle,

@@ -1,7 +1,12 @@
+// @flow
 import React from 'react';
 import { View } from 'react-native';
 
-const CardSection = props => {
+type Props = {
+	children: any
+}
+
+const CardSection = (props: Props) => {
 	return <View style={styles.containerStyle}>{props.children}</View>;
 };
 
