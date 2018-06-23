@@ -1,9 +1,17 @@
+// @flow
+
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
-class AlbumList extends Component {
+type State = {
+	albums: Array<Object>
+}
+
+type Props = {}
+
+class AlbumList extends Component<Props, State> {
 	state = { albums: [] };
 
 	componentWillMount() {
@@ -13,7 +21,8 @@ class AlbumList extends Component {
 	}
 
 	renderAlbums() {
-		return this.state.albums.map(album => (
+		const { albums } = this.state;
+		return albums.map(album => (
 			<AlbumDetail key={album.title} album={album} />
 		));
 	}
