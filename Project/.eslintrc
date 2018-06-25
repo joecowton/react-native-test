@@ -24,7 +24,7 @@
         "import/extensions": ["error", "ignorePackages"],
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
         "import/no-named-as-default": "off",
-        "import/no-unresolved": ["error", { ignore: ["^react$"] }],
+        "import/no-unresolved": ["error", { ignore: ["^react$", "^redux$"] }],
         'jsx-a11y/anchor-is-valid': ['error', {
             components: ['Link'],
             specialLink: ['to'],
