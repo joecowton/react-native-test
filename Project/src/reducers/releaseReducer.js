@@ -1,11 +1,11 @@
 // @flow
-import { FETCH_DATA } from '../types';
+import { FETCH_RELEASE } from '../types';
 import type { State, Action } from '../types';
 
 export default function(state: State = [], action: Action) {
     switch (action.type) {
-        case FETCH_DATA:
-            return [...state, ...action.payload];
+        case FETCH_RELEASE:
+            return { ...state, [action.payload.data.id]: action.payload.data };
         default:
             return state;
     }
