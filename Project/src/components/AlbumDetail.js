@@ -48,13 +48,13 @@ type Props = {
     album: AlbumType,
     uri: string,
     fetchRelease: string => void,
-    resource_url: string,
+    resource_url: String,
+    data: Array<*>,
 };
 
 class AlbumDetail extends React.Component<Props> {
-    componentDidMount() {
+    componentWillMount() {
         const { resource_url } = this.props.album;
-        console.log(resource_url);
         this.props.fetchRelease(resource_url);
     }
 
@@ -62,7 +62,10 @@ class AlbumDetail extends React.Component<Props> {
         const {
             album: { title, artist, thumb },
             uri,
+            data,
         } = this.props;
+
+        console.log(data);
 
         const {
             thumbnailStyle,
@@ -72,7 +75,7 @@ class AlbumDetail extends React.Component<Props> {
             imageStyle,
         } = styles;
 
-        return (
+        return data && data.images ? (
             <Card>
                 <CardSection>
                     <View style={thumbnailContainerStyle}>
@@ -84,7 +87,10 @@ class AlbumDetail extends React.Component<Props> {
                     </View>
                 </CardSection>
                 <CardSection>
-                    <Image style={imageStyle} source={{ uri }} />;
+                    <Image
+                        style={imageStyle}
+                        source={{ uri: data.images[0].uri }}
+                    />;
                 </CardSection>
                 <CardSection>
                     <Button onPress={() => Linking.openURL(resource_url)}>
@@ -92,16 +98,13 @@ class AlbumDetail extends React.Component<Props> {
                     </Button>
                 </CardSection>
             </Card>
-        );
+        ) : null;
     }
 }
 
-const mapStateToProps = state => {
-    if (state.release && state.release.data && state.release.data.images) {
-        return { uri: state.release.data.images[0].uri };
-    }
-    return {};
-};
+function mapStateToProps(state, ownProps) {
+    return { data: state.release[ownProps.album.id] };
+}
 
 const mapDispatchToProps = dispatch => ({
     fetchRelease: bindActionCreators(fetchRelease, dispatch),
