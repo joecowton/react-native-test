@@ -10,6 +10,10 @@ type Props = {
     data?: Array<*>,
 };
 
+const mapStateToProps = state => ({
+    data: state.data,
+});
+
 class AlbumList extends Component<Props> {
     static defaultProps = {
         data: [],
@@ -31,10 +35,6 @@ class AlbumList extends Component<Props> {
             </ScrollView>
         );
     }
-}
-
-function mapStateToProps(state) {
-    return { data: state.data };
 }
 
 export default connect(mapStateToProps, actions)(AlbumList);

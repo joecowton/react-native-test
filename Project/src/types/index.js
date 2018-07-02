@@ -1,3 +1,5 @@
+import { FETCH_RELEASE, FETCH_DATA } from '../actions/types';
+
 export type AlbumType = {
     album: {
         title: ?String,
@@ -29,9 +31,6 @@ export type State = Array<{
     completed: boolean,
     error: ?string,
 }>;
-
-export const FETCH_DATA: string = 'fetch_data';
-export const FETCH_RELEASE: string = 'fetch_release';
 
 type FetchReleaseAction = { type?: typeof FETCH_RELEASE, payload?: Payload };
 type FetchDataAction = { type: typeof FETCH_DATA, payload?: Payload };

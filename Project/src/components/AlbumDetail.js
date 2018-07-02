@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -11,11 +10,11 @@ import CardSection from './CardSection';
 import Button from './Button';
 
 type AlbumType = {
-    title: ?String,
-    artist: ?String,
-    thumbnail_image?: String,
-    image?: String,
-    resource_url?: String,
+    title: ?string,
+    artist: ?string,
+    thumbnail_image?: string,
+    image?: string,
+    resource_url?: string,
     thumb?: string,
 };
 
@@ -46,26 +45,22 @@ const styles = {
 
 type Props = {
     album: AlbumType,
-    uri: string,
     fetchRelease: string => void,
-    resource_url: String,
-    data: Array<*>,
+    resource_url: string,
+    data: { images: Array<*> },
 };
 
 class AlbumDetail extends React.Component<Props> {
     componentWillMount() {
-        const { resource_url } = this.props.album;
+        const { resource_url = '' } = this.props.album;
         this.props.fetchRelease(resource_url);
     }
 
     render() {
         const {
-            album: { title, artist, thumb },
-            uri,
+            album: { title, artist, thumb, resource_url },
             data,
         } = this.props;
-
-        console.log(data);
 
         const {
             thumbnailStyle,
@@ -102,9 +97,9 @@ class AlbumDetail extends React.Component<Props> {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return { data: state.release[ownProps.album.id] };
-}
+const mapStateToProps = (state, ownProps) => ({
+    data: state.release[ownProps.album.id],
+});
 
 const mapDispatchToProps = dispatch => ({
     fetchRelease: bindActionCreators(fetchRelease, dispatch),

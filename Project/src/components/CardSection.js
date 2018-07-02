@@ -6,10 +6,6 @@ type Props = {
     children: any,
 };
 
-const CardSection = (props: Props) => (
-    <View style={styles.containerStyle}>{props.children}</View>
-);
-
 const styles = {
     containerStyle: {
         borderBottomWidth: 1,
@@ -22,4 +18,6 @@ const styles = {
     },
 };
 
-export default CardSection;
+export default (props: Props) => (
+    <View style={styles.containerStyle}>{props.children}</View>
+);

@@ -23,8 +23,6 @@ const styles = {
     },
 };
 
-const Card = (props: Props) => (
+export default (props: Props) => (
     <View style={styles.containerStyle}>{props.children}</View>
 );
-
-export default Card;
