@@ -1,5 +1,5 @@
 // @flow
-import { FETCH_DATA } from '../types';
+import { FETCH_DATA } from '../actions/types';
 import type { State, Action } from '../types';
 
 export default function(state: State = [], action: Action) {

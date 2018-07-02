@@ -3,20 +3,10 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Text, View, Image, Linking } from 'react-native';
+import { Card, CardSection, Button } from './index';
 import { fetchRelease } from '../actions/index';
-import Card from './Card';
-import CardSection from './CardSection';
 
-import Button from './Button';
-
-type AlbumType = {
-    title: ?string,
-    artist: ?string,
-    thumbnail_image?: string,
-    image?: string,
-    resource_url?: string,
-    thumb?: string,
-};
+import type { AlbumType } from '../types/index';
 
 const styles = {
     headerContentStyle: {
@@ -50,9 +40,17 @@ type Props = {
     data: { images: Array<*> },
 };
 
-class AlbumDetail extends React.Component<Props> {
-    componentWillMount() {
-        const { resource_url = '' } = this.props.album;
+const mapStateToProps = (state, ownProps) => ({
+    data: state.release[ownProps.album.id],
+});
+
+const mapDispatchToProps = dispatch => ({
+    fetchRelease: bindActionCreators(fetchRelease, dispatch),
+});
+
+class ReleaseDetail extends React.Component<Props> {
+    componentDidMount() {
+        const { resource_url } = this.props.album;
         this.props.fetchRelease(resource_url);
     }
 
@@ -97,12 +95,4 @@ class AlbumDetail extends React.Component<Props> {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    data: state.release[ownProps.album.id],
-});
-
-const mapDispatchToProps = dispatch => ({
-    fetchRelease: bindActionCreators(fetchRelease, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AlbumDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ReleaseDetail);

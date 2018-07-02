@@ -1,9 +1,10 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AlbumDetail from './AlbumDetail';
-import * as actions from '../actions';
+import { ReleaseDetail } from './index';
+import { fetchData } from '../actions';
 
 type Props = {
     fetchData: string => void,
@@ -14,12 +15,16 @@ const mapStateToProps = state => ({
     data: state.data,
 });
 
-class AlbumList extends Component<Props> {
+const mapDispatchToProps = dispatch => ({
+    fetchData: bindActionCreators(fetchData, dispatch),
+});
+
+class ReleaseList extends React.Component<Props> {
     static defaultProps = {
         data: [],
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchData('251117');
     }
 
@@ -30,11 +35,11 @@ class AlbumList extends Component<Props> {
             <ScrollView>
                 {data &&
                     data.map(album => (
-                        <AlbumDetail key={album.id} album={album} />
+                        <ReleaseDetail key={album.id} album={album} />
                     ))}
             </ScrollView>
         );
     }
 }
 
-export default connect(mapStateToProps, actions)(AlbumList);
+export default connect(mapStateToProps, mapDispatchToProps)(ReleaseList);

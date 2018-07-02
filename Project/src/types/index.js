@@ -1,14 +1,12 @@
 import { FETCH_RELEASE, FETCH_DATA } from '../actions/types';
 
 export type AlbumType = {
-    album: {
-        title: ?String,
-        artist: ?String,
-        thumbnail_image?: String,
-        image?: String,
-        resource_url?: String,
-        thumb?: string,
-    },
+    title: ?string,
+    artist: ?string,
+    thumbnail_image?: string,
+    image?: string,
+    resource_url?: string,
+    thumb?: string,
 };
 
 type Payload = {

@@ -28,7 +28,7 @@ const styles = {
     },
 };
 
-const Button = ({ onPress, children }: Props) => {
+export default ({ onPress, children }: Props) => {
     const { buttonStyle, textStyle } = styles;
 
     return (
@@ -37,5 +37,3 @@ const Button = ({ onPress, children }: Props) => {
         </TouchableOpacity>
     );
 };
-
-export default Button;

@@ -1,6 +1,6 @@
 // @flow
 import axios from 'axios';
-import { FETCH_DATA, FETCH_RELEASE } from '../types';
+import { FETCH_DATA, FETCH_RELEASE } from './types';
 
 const myKey = 'qeIeIQJgvnggcqHasaVV';
 const mySecret = 'OndCkhIDXkQruNLkDZLYjrPyaeQbYhlc';

@@ -8,6 +8,7 @@ type Props = {
 
 const styles = {
     containerStyle: {
+        backgroundColor: '#fff',
         borderWidth: 1,
         borderRadius: 2,
         borderColor: '#ddd',
